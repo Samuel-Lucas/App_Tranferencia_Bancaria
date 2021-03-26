@@ -42,6 +42,20 @@ namespace DIO_bank
             Console.WriteLine("Saldo atual da conta de {0} é {1}", this.Nome, this.Saldo);
         }
 
+        public bool Emprestimo(double valorEmprestimo)
+        {
+            // Validação do limite para empréstimo
+            if(valorEmprestimo > 9000) {
+                Console.WriteLine("Ultrapassou o limite do empréstimo");
+                return false;
+            }
+
+            this.Saldo += valorEmprestimo;
+            Console.WriteLine("Saldo atual da conta de {0} é {1}", this.Nome, this.Saldo);
+
+            return true;
+        }
+
         public void Transferir(double valorTransferencia, Conta contaDestino)
         {
             if(this.Sacar(valorTransferencia)) {
